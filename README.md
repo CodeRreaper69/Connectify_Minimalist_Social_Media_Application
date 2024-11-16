@@ -79,7 +79,7 @@ Connectify is a minimalist social media application designed to reduce excessive
 
 6. Install the APK:
    - Locate the APK in `essentials` and install it on your device.
-   - [Connectify_Download](essentials/Connectify.apk)
+   - [Connectify_Download](apk/Connectify.apk)
 
 ---
 
