@@ -58,7 +58,7 @@ fun ProfileScreen(navController: NavController) {
                         .background(MaterialTheme.colorScheme.surface)
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.person_image), // Replace with actual drawable
+                        painter = painterResource(id = R.drawable.group_image), // Replace with actual drawable
                         contentDescription = "Profile Photo",
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
@@ -71,14 +71,14 @@ fun ProfileScreen(navController: NavController) {
 
                 // User Name
                 Text(
-                    text = "Ron Adam",
+                    text = "Jarifa",
                     style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
                     color = MaterialTheme.colorScheme.onPrimary
                 )
 
                 // User Bio
                 Text(
-                    text = "Musician | 'You go away as I care Huh' - out now?",
+                    text = "Hello!",
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurface,
                     modifier = Modifier.padding(vertical = 8.dp)

@@ -39,8 +39,8 @@ fun SearchUserScreen(navController: NavController) {
     val allUsers = listOf(
         User("Ron Adam", R.drawable.person_image),
         User("Malisa", R.drawable.cat_image),
-        User("David", R.drawable.group_image),
-        User("Ben", R.drawable.food_image),
+        User("Jarifa", R.drawable.group_image),
+        User("Malisa", R.drawable.food_image),
         User("Eva", R.drawable.scene_image)
     )
 

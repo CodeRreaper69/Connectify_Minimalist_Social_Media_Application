@@ -62,5 +62,7 @@ dependencies {
     implementation("androidx.compose.material3:material3:1.2.0-alpha01") // For Material 3 components
     //implementation("androidx.navigation:navigation-compose:2.5.3")      // For Compose navigation
     implementation("androidx.compose.ui:ui-tooling:1.5.1")              // For Preview and debugging UI
-    implementation("androidx.compose.ui:ui-tooling-preview:1.5.1")      // For Preview annotations
+    implementation("androidx.compose.ui:ui-tooling-preview:1.5.1")
+    implementation("io.coil-kt:coil-compose:2.4.0") // Replace with the latest version
+// For Preview annotations
 }

@@ -1,14 +1,16 @@
 package com.example.connectify.ui.screens
 
+import androidx.compose.animation.core.*
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 //import androidx.compose.ui.graphics.Color
@@ -21,9 +23,29 @@ import androidx.navigation.NavController
 import com.example.connectify.R
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
+import kotlinx.coroutines.delay
+import kotlin.random.Random
 
 @Composable
 fun WelcomeScreen(navController: NavController) {
+    var isLoading by remember { mutableStateOf(true) }
+    var connectionStatus by remember { mutableStateOf("Connecting...") }
+    var connectionSuccess by remember { mutableStateOf(false) }
+
+    // Simulate database connection process
+    LaunchedEffect(Unit) {
+        delay(2000) // Initial loading time
+        connectionStatus = if (Random.nextDouble() <= 0.7) {
+            connectionSuccess = true
+            "Connected Successfully!"
+        } else {
+            connectionSuccess = false
+            "Connection Failed!"
+        }
+        delay(1000)
+        isLoading = false
+    }
+
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -83,42 +105,100 @@ fun WelcomeScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                // Sign In Button
-                Button(
-                    onClick = { navController.navigate("sign_in_screen") },
-                    shape = RoundedCornerShape(12.dp),
-                    modifier = Modifier
-                        .fillMaxWidth(0.8f)
-                        .height(50.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.primary
+                // Loading or Connection Status
+                if (isLoading) {
+                    // Rotating Loading Indicator
+                    val rotation by rememberInfiniteTransition().animateFloat(
+                        initialValue = 0f,
+                        targetValue = 360f,
+                        animationSpec = infiniteRepeatable(
+                            animation = tween(1000, easing = LinearEasing)
+                        )
                     )
-                ) {
+
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_loading),
+                        contentDescription = "Loading",
+                        modifier = Modifier
+                            .size(50.dp)
+                            .rotate(rotation),
+                        tint = MaterialTheme.colorScheme.primary
+                    )
+                } else {
+                    // Connection Status Text
                     Text(
-                        text = "Sign In",
-                        style = MaterialTheme.typography.labelLarge,
-                        color = MaterialTheme.colorScheme.onPrimary
+                        text = "Database $connectionStatus",
+                        style = MaterialTheme.typography.headlineSmall.copy(
+                            fontWeight = FontWeight.ExtraLight,
+                            fontSize = 16.sp
+                        ),
+                        color = if (connectionSuccess)
+                            MaterialTheme.colorScheme.primary
+                        else MaterialTheme.colorScheme.error
                     )
                 }
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(24.dp))
 
-                // Sign Up Button
-                Button(
-                    onClick = { navController.navigate("sign_up_screen") },
-                    shape = RoundedCornerShape(12.dp),
-                    modifier = Modifier
-                        .fillMaxWidth(0.8f)
-                        .height(50.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.secondary
-                    )
-                ) {
-                    Text(
-                        text = "Sign Up",
-                        style = MaterialTheme.typography.labelLarge,
-                        color = MaterialTheme.colorScheme.onSecondary
-                    )
+                // Buttons (show only after loading)
+                if (!isLoading) {
+                    // Sign In Button
+                    Button(
+                        onClick = {
+                            if (connectionSuccess) {
+                                navController.navigate("sign_in_screen")
+                            }
+                        },
+                        shape = RoundedCornerShape(12.dp),
+                        modifier = Modifier
+                            .fillMaxWidth(0.8f)
+                            .height(50.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = if (connectionSuccess)
+                                MaterialTheme.colorScheme.primary
+                            else MaterialTheme.colorScheme.surface,
+                            disabledContainerColor = MaterialTheme.colorScheme.surface
+                        ),
+                        enabled = connectionSuccess
+                    ) {
+                        Text(
+                            text = "Sign In",
+                            style = MaterialTheme.typography.labelLarge,
+                            color = if (connectionSuccess)
+                                MaterialTheme.colorScheme.onPrimary
+                            else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    // Sign Up Button
+                    Button(
+                        onClick = {
+                            if (connectionSuccess) {
+                                navController.navigate("sign_up_screen")
+                            }
+                        },
+                        shape = RoundedCornerShape(12.dp),
+                        modifier = Modifier
+                            .fillMaxWidth(0.8f)
+                            .height(50.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = if (connectionSuccess)
+                                MaterialTheme.colorScheme.secondary
+                            else MaterialTheme.colorScheme.surface,
+                            disabledContainerColor = MaterialTheme.colorScheme.surface
+                        ),
+                        enabled = connectionSuccess
+                    ) {
+                        Text(
+                            text = "Sign Up",
+                            style = MaterialTheme.typography.labelLarge,
+                            color = if (connectionSuccess)
+                                MaterialTheme.colorScheme.onSecondary
+                            else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
+                        )
+                    }
                 }
             }
         }
@@ -132,10 +212,3 @@ fun PreviewWelcomeScreen() {
         WelcomeScreen(navController = rememberNavController())
     }
 }
-//@Preview(showBackground = true, name = "Light Mode")
-//@Composable
-//fun PreviewWelcomeScreenLight() {
-//    com.example.connectify.ui.theme.ConnectifyTheme(darkTheme = false) {
-//        WelcomeScreen(navController = rememberNavController())
-//    }
-//}
