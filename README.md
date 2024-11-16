@@ -95,44 +95,35 @@ Here’s the updated **Screenshots Section** for your README that includes the n
   <tr>
     <td><strong>Welcome Screen</strong></td>
     <td><strong>Sign In Screen</strong></td>
-  </tr>
-  <tr>
-    <td><img src="essentials/WelcomePage.png" alt="Welcome Screen" width="300"/></td>
-    <td><img src="essentials/SignIn.png" alt="Sign In Screen" width="300"/></td>
-  </tr>
-  <tr>
     <td><strong>Sign Up Screen</strong></td>
+  </tr>
+  <tr>
+    <td><img src="essentials/WelcomePage.png" alt="Welcome Screen" width="200"/></td>
+    <td><img src="essentials/SignIn.png" alt="Sign In Screen" width="200"/></td>
+    <td><img src="essentials/SignUp.png" alt="Sign Up Screen" width="200"/></td>
+  </tr>
+  <tr>
     <td><strong>Home Screen</strong></td>
-  </tr>
-  <tr>
-    <td><img src="essentials/SignUp.png" alt="Sign Up Screen" width="300"/></td>
-    <td><img src="essentials/Home.png" alt="Home Screen" width="300"/></td>
-  </tr>
-  <tr>
     <td><strong>Create Post</strong></td>
     <td><strong>Profile Screen</strong></td>
   </tr>
   <tr>
-    <td><img src="essentials/CreatePost.png" alt="Create Post Screen" width="300"/></td>
-    <td><img src="essentials/Profile.png" alt="Profile Screen" width="300"/></td>
+    <td><img src="essentials/Home.png" alt="Home Screen" width="200"/></td>
+    <td><img src="essentials/CreatePost.png" alt="Create Post Screen" width="200"/></td>
+    <td><img src="essentials/Profile.png" alt="Profile Screen" width="200"/></td>
   </tr>
   <tr>
     <td><strong>Search Users</strong></td>
     <td><strong>Message Screen</strong></td>
-  </tr>
-  <tr>
-    <td><img src="essentials/SeachUsers.png" alt="Search Users Screen" width="300"/></td>
-    <td><img src="essentials/MessageScreen.png" alt="Message Screen" width="300"/></td>
-  </tr>
-  <tr>
     <td><strong>Settings Screen</strong></td>
-    <td></td>
   </tr>
   <tr>
-    <td><img src="essentials/Settings.png" alt="Settings Screen" width="300"/></td>
-    <td></td>
+    <td><img src="essentials/SeachUsers.png" alt="Search Users Screen" width="200"/></td>
+    <td><img src="essentials/MessageScreen.png" alt="Message Screen" width="200"/></td>
+    <td><img src="essentials/Settings.png" alt="Settings Screen" width="200"/></td>
   </tr>
 </table>
+
 
 
 ### **How to Add Screenshots**
