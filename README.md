@@ -58,10 +58,10 @@ Connectify is a minimalist social media application designed to reduce excessive
 
 ### Steps to Build and Run the App
 
-1. Clone this repository:
+1. Clone this repository or directly open through Android Studio after Cloning
    ```bash
    git clone https://github.com/https://github.com/CodeRreaper69/Connectify_Minimalist_Social_Media_Application.git
-   cd connectify
+   Connectify_Minimalist_Social_Media_Application.git
    ```
 
 2. Open the project in Android Studio:
