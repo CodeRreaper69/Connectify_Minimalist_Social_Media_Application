@@ -124,13 +124,6 @@ Here’s the updated **Screenshots Section** for your README that includes the n
   </tr>
 </table>
 
-
-
-### **How to Add Screenshots**
-To add more screenshots or update existing ones:
-1. Place the image files in the `essentials` folder in your repository.
-2. Update the file paths in this README to reflect the changes.
-
 ---
 
 ## **Why Connectify?**
