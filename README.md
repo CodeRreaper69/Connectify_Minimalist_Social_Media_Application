@@ -84,10 +84,34 @@ Connectify is a minimalist social media application designed to reduce excessive
 
 ## **App Screenshots**
 
-| Welcome Screen | Home Screen | Profile Screen |
-|----------------|-------------|----------------|
-| ![Welcome Screen](screenshots/welcome.png) | ![Home Screen](screenshots/home.png) | ![Profile Screen](screenshots/profile.png) |
+Here’s the updated **Screenshots Section** for your README that includes the new images from the `essentials` folder in your GitHub repository:
 
+---
+
+## **App Screenshots**
+
+| **Screen**         | **Preview**                              |
+|---------------------|------------------------------------------|
+| **Welcome Screen**  | ![Welcome Screen](essentials/WelcomePage.png)  |
+| **Sign In Screen**  | ![Sign In Screen](essentials/SignIn.png)       |
+| **Sign Up Screen**  | ![Sign Up Screen](essentials/SignUp.png)       |
+| **Home Screen**     | ![Home Screen](essentials/Home.png)           |
+| **Create Post**     | ![Create Post Screen](essentials/CreatePost.png) |
+| **Profile Screen**  | ![Profile Screen](essentials/Profile.png)       |
+| **Search Users**    | ![Search Users Screen](essentials/SeachUsers.png) |
+| **Message Screen**  | ![Message Screen](essentials/MessageScreen.png) |
+| **Settings Screen** | ![Settings Screen](essentials/Settings.png)     |
+
+---
+
+### **How to Add Screenshots**
+To add more screenshots or update existing ones:
+1. Place the image files in the `essentials` folder in your repository.
+2. Update the file paths in this README to reflect the changes.
+
+---
+
+This updated section now lists all the screens with proper file names and relative paths to the `essentials` folder. Let me know if you need any further customization! 😊
 ---
 
 ## **Why Connectify?**
