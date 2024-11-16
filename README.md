@@ -60,12 +60,12 @@ Connectify is a minimalist social media application designed to reduce excessive
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/connectify.git
+   git clone https://github.com/https://github.com/CodeRreaper69/Connectify_Minimalist_Social_Media_Application.git
    cd connectify
    ```
 
 2. Open the project in Android Studio:
-   - File > Open > Navigate to the `connectify` folder > Open.
+   - File > Open > Navigate to the `Connectify_Minimalist_Social_Media_Application` folder > Open.
 
 3. Sync the project with Gradle files:
    - Click on "Sync Project with Gradle Files" in the top-right corner.
@@ -77,8 +77,9 @@ Connectify is a minimalist social media application designed to reduce excessive
    - Connect an Android device or start an emulator.
    - Click the **Run** button in Android Studio.
 
-6. Install the generated APK:
+6. Install the APK:
    - Locate the APK in `essentials` and install it on your device.
+   - [Connectify_Download](essentials/Connectify.apk)
 
 ---
 
@@ -90,17 +91,17 @@ Here’s the updated **Screenshots Section** for your README that includes the n
 
 ## **App Screenshots**
 
-| **Screen**         | **Preview**                              |
-|---------------------|------------------------------------------|
-| **Welcome Screen**  | ![Welcome Screen](essentials/WelcomePage.png)  |
-| **Sign In Screen**  | ![Sign In Screen](essentials/SignIn.png)       |
-| **Sign Up Screen**  | ![Sign Up Screen](essentials/SignUp.png)       |
-| **Home Screen**     | ![Home Screen](essentials/Home.png)           |
-| **Create Post**     | ![Create Post Screen](essentials/CreatePost.png) |
-| **Profile Screen**  | ![Profile Screen](essentials/Profile.png)       |
-| **Search Users**    | ![Search Users Screen](essentials/SeachUsers.png) |
-| **Message Screen**  | ![Message Screen](essentials/MessageScreen.png) |
-| **Settings Screen** | ![Settings Screen](essentials/Settings.png)     |
+| **Screen**         | **Preview**                                                                 |
+|---------------------|----------------------------------------------------------------------------|
+| **Welcome Screen**  | <img src="essentials/WelcomePage.png" alt="Welcome Screen" width="300"/>   |
+| **Sign In Screen**  | <img src="essentials/SignIn.png" alt="Sign In Screen" width="300"/>        |
+| **Sign Up Screen**  | <img src="essentials/SignUp.png" alt="Sign Up Screen" width="300"/>        |
+| **Home Screen**     | <img src="essentials/Home.png" alt="Home Screen" width="300"/>            |
+| **Create Post**     | <img src="essentials/CreatePost.png" alt="Create Post Screen" width="300"/>|
+| **Profile Screen**  | <img src="essentials/Profile.png" alt="Profile Screen" width="300"/>      |
+| **Search Users**    | <img src="essentials/SeachUsers.png" alt="Search Users Screen" width="300"/>|
+| **Message Screen**  | <img src="essentials/MessageScreen.png" alt="Message Screen" width="300"/>|
+| **Settings Screen** | <img src="essentials/Settings.png" alt="Settings Screen" width="300"/>    |
 
 ---
 
@@ -109,9 +110,6 @@ To add more screenshots or update existing ones:
 1. Place the image files in the `essentials` folder in your repository.
 2. Update the file paths in this README to reflect the changes.
 
----
-
-This updated section now lists all the screens with proper file names and relative paths to the `essentials` folder. Let me know if you need any further customization! 😊
 ---
 
 ## **Why Connectify?**
