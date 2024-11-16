@@ -70,7 +70,7 @@ fun HomeScreen(navController: NavController) {
                     )
                 }
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(8.dp))
 
                 Button(
                     onClick = { navController.navigate(Screen.Profile.route) },
@@ -89,7 +89,7 @@ fun HomeScreen(navController: NavController) {
                     )
                 }
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(8.dp))
 
                 Button(
                     onClick = { navController.navigate(Screen.SearchUser.route) },
@@ -108,7 +108,26 @@ fun HomeScreen(navController: NavController) {
                     )
                 }
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Button(
+                    onClick = { navController.navigate(Screen.Message.route) },
+                    shape = RoundedCornerShape(8.dp),
+                    modifier = Modifier
+                        .fillMaxWidth(0.8f)
+                        .height(50.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.secondary
+                    )
+                ) {
+                    Text(
+                        text = "Message",
+                        style = MaterialTheme.typography.labelLarge,
+                        color = MaterialTheme.colorScheme.onSecondary
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(8.dp))
 
                 Button(
                     onClick = { navController.navigate(Screen.Settings.route) },
@@ -127,7 +146,7 @@ fun HomeScreen(navController: NavController) {
                     )
                 }
 
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(15.dp))
 
                 // Example Posts Section
                 Text(
@@ -137,7 +156,7 @@ fun HomeScreen(navController: NavController) {
                     modifier = Modifier.align(Alignment.Start)
                 )
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(8.dp))
 
                 // Example Posts
                 Column(
