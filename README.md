@@ -155,5 +155,5 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## **Contact**
 
 For any questions, feedback, or feature requests, feel free to reach out:
-- Email  : [deysourabh8981@gmail.com](deysourabh8981@gmail.com)
+- Email    : [deysourabh8981@gmail.com](deysourabh8981@gmail.com)
 - GitHub : [CodeRreaper69](https://github.com/CodeRreaper69)
