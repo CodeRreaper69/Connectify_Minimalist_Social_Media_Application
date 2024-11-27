@@ -1,6 +1,5 @@
 package com.example.connectify.ui.screens
 
-//import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -13,6 +12,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -28,7 +28,6 @@ import com.example.connectify.ui.theme.ConnectifyTheme
 
 @Composable
 fun HomeScreen(navController: NavController, postViewModel: PostViewModel = viewModel()) {
-    // Collect the posts from ViewModel
     val posts = postViewModel.posts.collectAsState().value
 
     Surface(
@@ -47,168 +46,119 @@ fun HomeScreen(navController: NavController, postViewModel: PostViewModel = view
                     )
                 )
         ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(16.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+            LazyColumn(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                contentPadding = PaddingValues(horizontal = 16.dp, vertical = 16.dp)
             ) {
-                // Title
-                Text(
-                    text = "Home",
-                    style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
-                    color = MaterialTheme.colorScheme.onPrimary,
-                    modifier = Modifier.padding(bottom = 16.dp)
-                )
+                item {
+                    Column(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        // Title
+                        Text(
+                            text = "Home",
+                            style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
+                            color = MaterialTheme.colorScheme.onPrimary,
+                            modifier = Modifier.padding(bottom = 16.dp)
+                        )
 
-                // Navigation Buttons
-                Button(
-                    onClick = { navController.navigate(Screen.CreatePost.route) },
-                    shape = RoundedCornerShape(8.dp),
-                    modifier = Modifier
-                        .fillMaxWidth(0.8f)
-                        .height(50.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.primary
-                    )
-                ) {
+                        // Navigation Buttons
+                        NavigationButton(
+                            text = "Create Post",
+                            onClick = { navController.navigate(Screen.CreatePost.route) },
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                        NavigationButton(
+                            text = "Comment on Post",
+                            onClick = { navController.navigate(Screen.Comment.route) },
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                        NavigationButton(
+                            text = "View Profile",
+                            onClick = { navController.navigate(Screen.Profile.route) },
+                            color = MaterialTheme.colorScheme.secondary
+                        )
+                        NavigationButton(
+                            text = "Search User",
+                            onClick = { navController.navigate(Screen.SearchUser.route) },
+                            color = MaterialTheme.colorScheme.secondary
+                        )
+                        NavigationButton(
+                            text = "ConnectiChat",
+                            onClick = { navController.navigate(Screen.Message.route) },
+                            color = MaterialTheme.colorScheme.secondary
+                        )
+                        NavigationButton(
+                            text = "Settings",
+                            onClick = { navController.navigate(Screen.Settings.route) },
+                            color = MaterialTheme.colorScheme.secondaryContainer
+                        )
+                    }
+                }
+
+                item {
+                    Spacer(modifier = Modifier.height(16.dp))
                     Text(
-                        text = "Create Post",
-                        style = MaterialTheme.typography.labelLarge,
-                        color = MaterialTheme.colorScheme.onPrimary
+                        text = "Example Posts",
+                        style = MaterialTheme.typography.headlineSmall,
+                        color = MaterialTheme.colorScheme.onPrimary,
+                        modifier = Modifier.padding(bottom = 8.dp)
                     )
                 }
 
-                Spacer(modifier = Modifier.height(16.dp))
-
-                Button(
-                    onClick = { navController.navigate(Screen.Profile.route) },
-                    shape = RoundedCornerShape(8.dp),
-                    modifier = Modifier
-                        .fillMaxWidth(0.8f)
-                        .height(50.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.secondary
+                // Example Posts
+                items(
+                    listOf(
+                        Post("Sourabh", "Check out this amazing cat!",imageUri = null, drawableRes = R.drawable.scene_image),
+                        Post("Malisa", "Enjoying a wonderful day!",imageUri = null, drawableRes = R.drawable.food_image),
+                        Post("Ron", "Excited to be here!",imageUri = null, drawableRes = R.drawable.person_image)
                     )
-                ) {
-                    Text(
-                        text = "View Profile",
-                        style = MaterialTheme.typography.labelLarge,
-                        color = MaterialTheme.colorScheme.onSecondary
+                ) { post ->
+                    ExamplePostWithImage(
+                        user = post.user,
+                        content = post.content,
+                        imageResId = post.drawableRes // Pass the drawable resource ID
                     )
                 }
 
-                Spacer(modifier = Modifier.height(16.dp))
 
-                Button(
-                    onClick = { navController.navigate(Screen.SearchUser.route) },
-                    shape = RoundedCornerShape(8.dp),
-                    modifier = Modifier
-                        .fillMaxWidth(0.8f)
-                        .height(50.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.secondary
-                    )
-                ) {
-                    Text(
-                        text = "Search User",
-                        style = MaterialTheme.typography.labelLarge,
-                        color = MaterialTheme.colorScheme.onSecondary
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                Button(
-                    onClick = { navController.navigate(Screen.Message.route) },
-                    shape = RoundedCornerShape(8.dp),
-                    modifier = Modifier
-                        .fillMaxWidth(0.8f)
-                        .height(50.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.secondary
-                    )
-                ) {
-                    Text(
-                        text = "ConnectiChat",
-                        style = MaterialTheme.typography.labelLarge,
-                        color = MaterialTheme.colorScheme.onSecondary
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(8.dp))
-                Button(
-                    onClick = { navController.navigate(Screen.Settings.route) },
-                    shape = RoundedCornerShape(8.dp),
-                    modifier = Modifier
-                        .fillMaxWidth(0.8f)
-                        .height(50.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.secondaryContainer)
-                ) {
-                    Text(
-                        text = "Settings",
-                        style = MaterialTheme.typography.labelLarge,
-                        color = MaterialTheme.colorScheme.onSecondaryContainer
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(24.dp))
-
-                // Example Posts Section
-                Column(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalAlignment = Alignment.Start
-                ) {
+                item {
+                    Spacer(modifier = Modifier.height(16.dp))
                     Text(
                         text = "Recent Posts",
                         style = MaterialTheme.typography.headlineSmall,
                         color = MaterialTheme.colorScheme.onPrimary,
                         modifier = Modifier.padding(bottom = 8.dp)
                     )
-
-                    ExamplePostWithImage(
-                        user = "Jarifa",
-                        content = "Check out this amazing cat!",
-                        imageResId = R.drawable.cat_image
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    ExamplePostWithImage(
-                        user = "Malisa",
-                        content = "Enjoying a wonderful day!",
-                        imageResId = R.drawable.food_image
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    ExamplePostWithImage(
-                        user = "Charlie",
-                        content = "Excited to be here!",
-                        imageResId = R.drawable.person_image
-                    )
                 }
 
-                Spacer(modifier = Modifier.height(16.dp))
-
-                // Recent Posts Section
-                Text(
-                    text = "Recent Posts",
-                    style = MaterialTheme.typography.headlineSmall,
-                    color = MaterialTheme.colorScheme.onPrimary,
-                    modifier = Modifier.align(Alignment.Start)
-                )
-
-                Spacer(modifier = Modifier.height(8.dp))
-
-                // Display Posts
-                LazyColumn(
-                    modifier = Modifier.fillMaxSize(),
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    items(posts) { post ->
-                        PostItem(post)
-                    }
+                // User Posts
+                items(posts) { post ->
+                    PostItem(post)
                 }
             }
         }
+    }
+}
+
+@Composable
+fun NavigationButton(text: String, onClick: () -> Unit, color: Color) {
+    Button(
+        onClick = onClick,
+        shape = RoundedCornerShape(8.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(40.dp)
+            .padding(bottom = 8.dp),
+        colors = ButtonDefaults.buttonColors(containerColor = color)
+    ) {
+        Text(
+            text = text,
+            style = MaterialTheme.typography.labelMedium,
+            color = MaterialTheme.colorScheme.onPrimary
+        )
     }
 }
 
@@ -233,24 +183,38 @@ fun PostItem(post: Post) {
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            post.imageUri?.let { uri ->
-                Image(
-                    painter = rememberAsyncImagePainter(model = uri.toString()), // Convert Uri to String
-                    contentDescription = "Post Image",
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(150.dp),
-                    contentScale = ContentScale.Crop
-                )
-            } ?: run {
-                Image(
-                    painter = painterResource(id = R.drawable.ic_placeholder),
-                    contentDescription = "Placeholder Image",
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(150.dp),
-                    contentScale = ContentScale.Crop
-                )
+            // Show image from URI or drawable resource
+            when {
+                post.imageUri != null -> {
+                    Image(
+                        painter = rememberAsyncImagePainter(model = post.imageUri),
+                        contentDescription = "Post Image",
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(120.dp),
+                        contentScale = ContentScale.Crop
+                    )
+                }
+                post.drawableRes != null -> {
+                    Image(
+                        painter = painterResource(id = post.drawableRes),
+                        contentDescription = "Post Image",
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(120.dp),
+                        contentScale = ContentScale.Crop
+                    )
+                }
+                else -> {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_placeholder),
+                        contentDescription = "Placeholder Image",
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(120.dp),
+                        contentScale = ContentScale.Crop
+                    )
+                }
             }
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -263,8 +227,10 @@ fun PostItem(post: Post) {
         }
     }
 }
+
+
 @Composable
-fun ExamplePostWithImage(user: String, content: String, imageResId: Int) {
+fun ExamplePostWithImage(user: String, content: String, imageResId: Int?) {
     Card(
         shape = RoundedCornerShape(12.dp),
         modifier = Modifier
@@ -282,15 +248,20 @@ fun ExamplePostWithImage(user: String, content: String, imageResId: Int) {
                 color = MaterialTheme.colorScheme.primary
             )
             Spacer(modifier = Modifier.height(8.dp))
-            Image(
-                painter = painterResource(id = imageResId),
-                contentDescription = "Post Image",
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(150.dp),
-                contentScale = ContentScale.Crop
-            )
+
+            if (imageResId != null) {
+                Image(
+                    painter = painterResource(id = imageResId),
+                    contentDescription = "Post Image",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(120.dp),
+                    contentScale = ContentScale.Crop
+                )
+            }
+
             Spacer(modifier = Modifier.height(8.dp))
+
             Text(
                 text = content,
                 style = MaterialTheme.typography.bodyMedium,
@@ -299,6 +270,8 @@ fun ExamplePostWithImage(user: String, content: String, imageResId: Int) {
         }
     }
 }
+
+
 @Preview(showBackground = true, name = "Dark Mode")
 @Composable
 fun PreviewHomeScreen() {

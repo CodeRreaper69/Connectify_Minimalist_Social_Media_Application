@@ -8,7 +8,8 @@ import androidx.lifecycle.ViewModel
 data class Post(
     val user: String,
     val content: String,
-    val imageUri: Uri?
+    val imageUri: Uri?,
+    val drawableRes: Int? = null // Add this to support drawable resources
 )
 
 class PostViewModel : ViewModel() {

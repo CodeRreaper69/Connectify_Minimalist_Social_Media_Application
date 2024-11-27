@@ -71,7 +71,7 @@ fun ProfileScreen(navController: NavController) {
 
                 // User Name
                 Text(
-                    text = "Jarifa",
+                    text = "Sourabh",
                     style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
                     color = MaterialTheme.colorScheme.onPrimary
                 )
