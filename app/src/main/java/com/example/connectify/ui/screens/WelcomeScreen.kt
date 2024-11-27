@@ -13,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
-//import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -32,18 +31,26 @@ fun WelcomeScreen(navController: NavController) {
     var connectionStatus by remember { mutableStateOf("Connecting...") }
     var connectionSuccess by remember { mutableStateOf(false) }
 
-    // Simulate database connection process
-    LaunchedEffect(Unit) {
-        delay(2000) // Initial loading time
-        connectionStatus = if (Random.nextDouble() <= 0.7) {
-            connectionSuccess = true
-            "Connected Successfully!"
-        } else {
-            connectionSuccess = false
-            "Connection Failed!"
+    // Simulate connection as a Composable function
+    @Composable
+    fun SimulateConnection() {
+        LaunchedEffect(Unit) {
+            delay(2000) // Simulate initial loading time
+            connectionStatus = if (Random.nextDouble() <= 0.7) {
+                connectionSuccess = true
+                "Connected Successfully!"
+            } else {
+                connectionSuccess = false
+                "Connection Failed!"
+            }
+            delay(1000)
+            isLoading = false
         }
-        delay(1000)
-        isLoading = false
+    }
+
+    // Call the connection simulation
+    if (isLoading) {
+        SimulateConnection()
     }
 
     Surface(
@@ -86,7 +93,7 @@ fun WelcomeScreen(navController: NavController) {
                     Image(
                         painter = painterResource(id = R.drawable.connectify_cropped),
                         contentDescription = "App Logo",
-                        modifier = Modifier.size(500.dp),
+                        modifier = Modifier.size(100.dp),
                         contentScale = ContentScale.Crop
                     )
                 }
@@ -142,6 +149,31 @@ fun WelcomeScreen(navController: NavController) {
 
                 // Buttons (show only after loading)
                 if (!isLoading) {
+                    // Retry Connection Button (if connection failed)
+                    if (!connectionSuccess) {
+                        Button(
+                            onClick = {
+                                isLoading = true
+                                connectionStatus = "Connecting..."
+                            },
+                            shape = RoundedCornerShape(12.dp),
+                            modifier = Modifier
+                                .fillMaxWidth(0.8f)
+                                .height(50.dp),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = MaterialTheme.colorScheme.error
+                            )
+                        ) {
+                            Text(
+                                text = "Retry Connection",
+                                style = MaterialTheme.typography.labelLarge,
+                                color = MaterialTheme.colorScheme.onError
+                            )
+                        }
+
+                        Spacer(modifier = Modifier.height(16.dp))
+                    }
+
                     // Sign In Button
                     Button(
                         onClick = {
